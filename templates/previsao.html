@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Previsão | ClimaMigo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/">☀ ClimaMigo</a><a class="text-link" href="/">← Todas as cidades</a></header>
+  <main class="container">
+    <div class="forecast-header">
+      <div><p class="eyebrow">PREVISÃO DO TEMPO</p><h1 id="nome-cidade">Carregando...</h1><p id="local-cidade" class="muted"></p></div>
+      <button id="atualizar" class="button button-light">↻ Atualizar</button>
+    </div>
+    <div id="mensagem" class="message" role="status"></div>
+    <section id="cartao-atual" class="current-card">
+      <div><p id="condicao" class="condition">Consultando previsão...</p><div class="temperature"><span id="temperatura">—</span><sup>°C</sup></div><p>Sensação térmica: <strong id="sensacao">—</strong>°C</p></div>
+      <div class="current-details">
+        <div><span>Umidade</span><strong id="umidade">—</strong></div>
+        <div><span>Vento</span><strong id="vento">—</strong></div>
+        <div><span>Chuva atual</span><strong id="chuva">—</strong></div>
+        <div><span>Nebulosidade</span><strong id="nuvens">—</strong></div>
+      </div>
+    </section>
+    <section class="section-heading"><div><h2>Próximos 7 dias</h2><p>Temperaturas e chance máxima de chuva.</p></div></section>
+    <div id="lista-dias" class="forecast-grid"></div>
+    <section class="section-heading"><div><h2>Próximas horas</h2><p>Estimativa horária.</p></div></section>
+    <div class="table-wrap"><table><thead><tr><th>Horário</th><th>Condição</th><th>Temperatura</th><th>Chance de chuva</th><th>Vento</th></tr></thead><tbody id="lista-horas"></tbody></table></div>
+    <section class="recommendation panel">
+      <div><p class="eyebrow">ASSISTENTE METEOROLÓGICO</p><h2>O que vestir hoje?</h2><p class="muted">Recomendações com base nos dados meteorológicos.</p></div>
+      <button id="pedir-recomendacao" class="button button-primary">Gerar recomendação</button>
+      <div id="texto-recomendacao" class="recommendation-text">Clique no botão para analisar as condições atuais.</div>
+    </section>
+    <section class="panel edit-panel">
+      <h2>Gerenciar cidade</h2>
+      <p class="muted">Edite os dados cadastrados ou remova esta cidade.</p>
+      <div class="form-actions"><button id="editar-cidade" class="button button-light">Editar dados</button><button id="excluir-cidade" class="button button-danger">Excluir cidade</button></div>
+      <form id="form-edicao" class="form-grid hidden">
+        <div><label for="edit-nome">Nome</label><input id="edit-nome" required></div>
+        <div><label for="edit-estado">Estado / região</label><input id="edit-estado"></div>
+        <div><label for="edit-pais">País</label><input id="edit-pais"></div>
+        <div><label for="edit-lat">Latitude</label><input id="edit-lat" type="number" step="any" required></div>
+        <div><label for="edit-lon">Longitude</label><input id="edit-lon" type="number" step="any" required></div>
+        <div class="form-actions"><button class="button button-primary" type="submit">Salvar alterações</button></div>
+      </form>
+    </section>
+  </main>
+  <footer>Dados meteorológicos: Open-Meteo</footer>
+  <script>window.CIDADE_ID = {{ cidade_id|tojson }};</script>
+  <script src="{{ url_for('static', filename='js/previsao.js') }}"></script>
+</body>
+</html>

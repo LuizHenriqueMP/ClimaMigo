@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClimaMigo | Previsão do tempo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">☀ ClimaMigo</a>
+    <a class="button button-primary" href="/cidade/nova">＋ Adicionar cidade</a>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">SEU TEMPO, SEU DIA</p>
+      <h1>Como está o clima por aí?</h1>
+      <p>Escolha uma cidade para ver a previsão e descobrir como se vestir.</p>
+      <label class="searchbox">
+        <span>⌕</span>
+        <input id="busca-cidades" type="search" placeholder="Buscar uma cidade cadastrada..." autocomplete="off">
+      </label>
+    </section>
+    <section class="section-heading">
+      <div><h2>Suas cidades</h2><p>Previsões atualizadas sob demanda.</p></div>
+      <span id="contador-cidades" class="muted"></span>
+    </section>
+    <div id="lista-cidades" class="city-grid">
+      <p class="muted">Carregando cidades...</p>
+    </div>
+    <div id="mensagem" class="message" role="status"></div>
+  </main>
+  <footer>Dados meteorológicos: Open-Meteo · Mapa: OpenStreetMap</footer>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

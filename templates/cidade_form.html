@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adicionar cidade | ClimaMigo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/">☀ ClimaMigo</a><a class="text-link" href="/">← Voltar</a></header>
+  <main class="container narrow">
+    <p class="eyebrow">NOVA LOCALIZAÇÃO</p>
+    <h1>Adicionar cidade</h1>
+    <p class="muted">Pesquise um município ou clique no mapa para escolher uma localização.</p>
+    <form id="form-cidade" class="panel">
+      <label for="pesquisa-mapa">Pesquisar cidade</label>
+      <div class="search-row">
+        <input id="pesquisa-mapa" type="search" placeholder="Ex.: Feliz, RS" autocomplete="off">
+        <button class="button button-dark" id="btn-pesquisar" type="button">Pesquisar</button>
+      </div>
+      <div id="resultados-busca" class="search-results"></div>
+      <div id="mapa" aria-label="Mapa para escolher a localização"></div>
+      <p class="hint">Clique no mapa para preencher a localização aproximada. Confirme o nome antes de salvar.</p>
+      <div class="form-grid">
+        <div><label for="nome">Cidade / localidade *</label><input id="nome" name="nome" required maxlength="120"></div>
+        <div><label for="estado">Estado / região</label><input id="estado" name="estado" maxlength="120"></div>
+        <div><label for="pais">País</label><input id="pais" name="pais" maxlength="120" value="Brasil"></div>
+        <div class="coordinates"><span>Latitude</span><strong id="lat-label">—</strong><span>Longitude</span><strong id="lon-label">—</strong></div>
+      </div>
+      <input type="hidden" id="latitude" name="latitude">
+      <input type="hidden" id="longitude" name="longitude">
+      <div id="mensagem" class="message" role="status"></div>
+      <div class="form-actions"><a class="button button-light" href="/">Cancelar</a><button class="button button-primary" type="submit">Salvar cidade</button></div>
+    </form>
+  </main>
+  <footer>O mapa usa OpenStreetMap. A localização selecionada pode ser aproximada.</footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='js/mapa.js') }}"></script>
+</body>
+</html>

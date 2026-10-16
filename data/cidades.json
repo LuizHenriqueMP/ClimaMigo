@@ -1,0 +1,12 @@
+{
+  "cidades": [
+    {
+      "nome": "Porto Alegre",
+      "estado": "Rio Grande do Sul",
+      "pais": "Brasil",
+      "latitude": -30.03283,
+      "longitude": -51.23019,
+      "id": "e43db6ae-2ebb-4792-81b3-3672631a6025"
+    }
+  ]
+}
